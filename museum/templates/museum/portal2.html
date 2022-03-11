@@ -1,0 +1,22 @@
+{% load static %}
+<html>
+<head>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-environment-component/dist/aframe-en.."></script>
+</head>
+<a-scene cursor="rayOrigin: mouse" background="img src='lake'">
+<a-assets>
+<img id="skyTexture" src="/static/img/night.jpg">
+    <img src="{% static 'img/ozero3.jpg' %}" id="oz">
+</a-assets>
+
+<a-sky src="#skyTexture"></a-sky>
+<a-link
+position="-2 2 -2"
+image="#oz"
+href="{% url 'portal' %}"
+title="portal1"
+></a-link>
+</a-scene>
+</body>
+</html>

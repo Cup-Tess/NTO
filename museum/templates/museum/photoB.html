@@ -1,0 +1,175 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://libs.zappar.com/zappar-aframe/0.3.29/zappar-aframe.js"></script>
+    <meta charset="UTF-8" />
+      <script type="text/javascript" src="{% static 'img/html2canvas.js'%}"></script>
+    <title>BaykalAR</title>
+    <style>
+      #button {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        z-index: 1;
+      }
+      .next {
+        width: 40%;
+        height: 100%;
+        position: absolute;
+        background: white;
+        z-index: 2;
+        right: 0;
+        text-align: center;
+      }
+      .photo {
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        background: lightgray;
+        z-index: 2;
+        text-align: center;
+        right: 40%;
+      }
+      .back {
+        width: 40%;
+        height: 100%;
+        position: absolute;
+        background: white;
+        z-index: 2;
+        text-align: center;
+      }
+      img {
+        position: absolute;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+      <a-scene id="content" cursor="rayOrigin: mouse" raycaster="objects: [data-clickable]">
+        <a-assets>
+            <img
+            id="mask"
+            src="{%static 'img/mmm.png'%}"/>
+          <a-asset-item
+            id="lug"
+            src="{% static 'models/Немойлыжник.glb' %}"
+          ></a-asset-item>
+          <a-asset-item
+            id="lug_u"
+            src="{% static 'models/Улбыка.glb' %}"
+          ></a-asset-item>
+                   <a-asset-item
+            id="nerp"
+            src="{% static 'models/Квадраты.glb' %}"
+          ></a-asset-item>
+                    <a-asset-item
+            id="gl"
+            src="{% static 'models/Glaz.glb' %}"
+          ></a-asset-item>
+                    <a-asset-item
+            id="gl2"
+            src="{% static 'models/Глаз2.glb' %}"
+          ></a-asset-item>
+                      <a-asset-item
+            id="nimb"
+            src="{% static 'models/нимб.glb' %}"
+          ></a-asset-item>
+                      <a-asset-item
+            id="cvet"
+            src="{% static 'models/Venecc.glb' %}"
+          ></a-asset-item>
+            <a-asset-item
+            id="list"
+            src="{% static 'models/Listt.glb' %}"
+          ></a-asset-item>
+        </a-assets>
+        <a-entity zappar-permissions-ui id="permissions">
+          <a-entity
+            text="value: Please reload the page, accepting the camera permissions."
+            position="0 0 -2"
+          >
+          </a-entity>
+        </a-entity>
+        <a-entity camera zappar-camera="user-facing: true;"> </a-entity>
+        <a-entity zappar-face id="my-face-tracker">
+      <a-entity visible="true" id="facemesh1">
+          <a-entity gltf-model="#lug" scale="5 5 5" position="0 0 0.5"></a-entity>
+          <a-entity gltf-model="#lug_u" scale="5 5 5" position="0 0 0.5" animation="property: position; to: 0 0.2 0.8; dur: 2000; dir:alternate; easing: linear; loop: true" ></a-entity>
+      </a-entity>
+          <a-entity visible="false" id="facemesh2">
+            <a-entity gltf-model="#nerp" scale="1.2 1.2 1.2" position="0 0.1 0.2"></a-entity>
+            <a-entity gltf-model="#gl" scale="1.2 1.2 1.2" position="0 0.1 0.2"></a-entity>
+            <a-entity gltf-model="#gl2" scale="1.2 1.2 1.2" position="0 0.1 0.2"></a-entity>
+              <a-entity gltf-model="#nimb" scale="1.2 1.2 1.2" position="0 0.1 0.2" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity>
+          </a-entity>
+            <a-entity visible="false" id="facemesh3">
+
+                <a-entity zappar-head-mask="face:#my-face-tracker;"></a-entity>
+                <a-entity gltf-model="#cvet" rotation="180 0 0" scale="0.8 0.8 0.8" position="0 2 -3"></a-entity>
+                <a-entity gltf-model="#list" rotation="0 0 0" scale="1 1 1" position="-7 3 -10" animation="property: position; to: -3 -3 -10; dur: 5000; easing: linear; loop: true"></a-entity>
+
+            </a-entity>
+        </a-entity>
+      </a-scene>
+    <div id="button">
+      <div class="back" type="button" onclick="OnPrevClick()">
+        <img src="{% static 'img/back.png' %}" />
+      </div>
+      <a href="javascript: void(0);" id="get_images"><div class="photo" type="button"></div></a>
+      <div class="next" type="button" onclick="OnNextClick()">
+          <img class="rr" src="{% static 'img/next.png' %}" /></div>
+      <div id="result"></div>
+    </div>
+
+    <script>
+       window.onload = function () {
+       document.getElementById("get_images").onclick = function () {
+       html2canvas(document.getElementById("content")).then(function (canvas) {
+       var my_screen = canvas;
+       document.getElementById("result").appendChild(my_screen);
+        });
+        };
+        }
+      var tek = 1;
+      var col = 3;
+      function OnNextClick() {
+        if (tek < col) {
+          tek++; //curr = curr + 1
+          document
+            .getElementById("facemesh" + tek)
+            .setAttribute("visible", true);
+          document
+            .getElementById("facemesh" + (tek - 1))
+            .setAttribute("visible", false);
+        } else {
+          tek = 1;
+          document.getElementById("facemesh1").setAttribute("visible", true);
+          document
+            .getElementById("facemesh" + col)
+            .setAttribute("visible", false);
+        }
+      }
+      function OnPrevClick() {
+        if (tek > 1) {
+          tek--; //curr = curr + 1
+          document
+            .getElementById("facemesh" + tek)
+            .setAttribute("visible", true);
+          document
+            .getElementById("facemesh" + (tek + 1))
+            .setAttribute("visible", false);
+        } else {
+          tek = col;
+          document
+            .getElementById("facemesh" + col)
+            .setAttribute("visible", true);
+          document.getElementById("facemesh1").setAttribute("visible", false);
+        }
+      }
+    </script>
+  </body>
+</html>

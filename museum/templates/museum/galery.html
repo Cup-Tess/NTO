@@ -1,0 +1,114 @@
+{% load static %}
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://libs.zappar.com/zappar-aframe/0.3.29/zappar-aframe.js"></script>
+    <meta charset="utf-8" />
+    <title>BaykalAR</title>
+<script>
+    AFRAME.registerComponent("visibility-changer", {
+init: function () {
+    this.el.sceneEl.addEventListener('zappar-visible', () => this.el.setAttribute("visible", true));
+            this.el.sceneEl.addEventListener('zappar-notvisible', () => this.el.setAttribute("visible", false));
+        }
+    });
+    </script>
+  </head>
+  <body>
+    <a-scene
+    cursor="rayOrigin: mouse"
+    raycaster="objects: [data-clickable]"
+  >
+      <a-assets>
+         <img src="{% static 'img/next.png' %}" id="next">
+         <img src="{% static 'img/back.png' %}" id="back">
+         <img src="{% static 'img/1.jpg' %}" id="1">
+         <img src="{% static 'img/2.jpg' %}" id="2">
+         <img src="{% static 'img/3.jpg' %}" id="3">
+         <img src="{% static 'img/4.jpg' %}" id="4">
+         <img src="{% static 'img/5.jpg' %}" id="5">
+         <img src="{% static 'img/6.jpg' %}" id="6">
+         <img src="{% static 'img/7.jpg' %}" id="7">
+         <img src="{% static 'img/8.jpg' %}" id="8">
+         <img src="{% static 'img/9.jpg' %}" id="9">
+         <img src="{% static 'img/10.jpg' %}" id="10">
+         <img src="{% static 'img/11.jpg' %}" id="11">
+         <img src="{% static 'img/12.jpg' %}" id="12">
+         <img src="{% static 'img/13.jpg' %}" id="13">
+         <img src="{% static 'img/14.jpg' %}" id="14">
+         <img src="{% static 'img/15.jpg' %}" id="15">
+         <img src="{% static 'img/16.jpg' %}" id="16">
+         <img src="{% static 'img/17.jpg' %}" id="17">
+         <img src="{% static 'img/18.jpg' %}" id="18">
+         <img src="{% static 'img/19.jpg' %}" id="19">
+         <img src="{% static 'img/20.jpg' %}" id="20">
+         <img src="{% static 'img/21.jpg' %}" id="21">
+         <img src="{% static 'img/22.jpg' %}" id="22">
+         <img src="{% static 'img/23.jpg' %}" id="23">
+         <img src="{% static 'img/24.jpg' %}" id="24">
+         <img src="{% static 'img/25.jpg' %}" id="25">
+         <img src="{% static 'img/26.jpg' %}" id="26">
+         <img src="{% static 'img/27.jpg' %}" id="27">
+         <img src="{% static 'img/28.jpg' %}" id="28">
+         <img src="{% static 'img/29.jpg' %}" id="29">
+
+
+      </a-assets>
+      <a-entity zappar-permissions-ui id="permissions"></a-entity>
+      <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+      <a-camera zappar-camera> </a-camera>
+      <a-entity zappar-image="target:{% static 'img/met.zpt' %}" >
+        <a-entity visibility-changer="" visible="false">
+
+          <a-image
+            id="imm"
+            src="#1"
+            scale="1.5 1.5 1.5"
+            position="0 0 -0.02"
+          ></a-image>
+
+          <a-entity
+          geometry="primitive: plane"
+          material="src: #next; transparent: true;"
+          position="1.2 0 0"
+          scale="0.8 0.8 0.8"
+          data-clickable
+          onclick="OnNextClick()"
+        ></a-entity>
+
+        <a-entity
+          geometry="primitive: plane"
+          material="src: #back; transparent: true;"
+          position="-1.2 0 0"
+          scale="0.8 0.8 0.8"
+          data-clickable
+          onclick="OnPrevClick()"
+        ></a-entity>
+
+        </a-entity>
+      </a-entity>
+    </a-scene>
+    <script>
+      var tek = 1;
+    function OnNextClick() {
+      if (tek < 29){
+        tek++;
+        document.getElementById("imm").setAttribute("src", "#"+ tek);}
+      else {
+        tek = 1
+        document.getElementById("imm").setAttribute("src", "#" + tek);
+      }
+    }
+    function OnPrevClick() {
+      if (tek>1) {
+        tek--;
+        document.getElementById("imm").setAttribute("src", "#"+ tek);
+      }
+      else {
+        tek = 29
+        document.getElementById("imm").setAttribute("src", "#" + tek);
+      }
+    }
+  </script>
+  </body>
+</html>

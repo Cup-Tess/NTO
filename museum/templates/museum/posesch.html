@@ -1,0 +1,122 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Посещаемость</title>
+    <link rel="stylesheet" href="{% static 'css/statCrit1.css' %}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+</head>
+<body>
+<div class="desktop">
+<div class="body">
+    <a href="{% url 'statistica_polz' %}" class="statistica_polz">Назад</a>
+<div class="dia">
+<canvas id="chart" width="80" height="100"></canvas>
+ <script>
+   var data = JSON.parse("{{data|escapejs}}");
+let ctx = document.getElementById("chart").getContext("2d");
+Chart.defaults.global.defaultFontSize = 25;
+let chart = new Chart(ctx, {
+  type: "bar",
+  data: {
+     labels: [
+     "Экспонат 1",
+     "Экспонат 2",
+     "Экспонат 3",
+     "Экспонат 4",
+     "Экспонат 5",
+     "Экспонат 6",
+     "Экспонат 7",
+     "Экспонат 8"],
+
+     datasets: [
+        {
+          label: "Посещаемость",
+          backgroundColor: "#F4F296",
+          data:data,
+        },
+
+     ]
+  },
+  options: {
+     legend: {
+     position: 'bottom',
+     labels: {
+      fontSize: 20,
+     }
+     },
+     responsive: true,
+     scales: {
+        x: {
+        stacked: true,
+        },
+        y: {
+        stacked: true
+        },
+    }
+  },
+
+});
+  </script>
+</div>
+</div>
+</div>
+<div class="mobile">
+    <div class="body">
+    <a href="{% url 'statistica_polz' %}" class="statistica_polz">Назад</a>
+<div class="dia2">
+<canvas id="chart2" width="100" height="100"></canvas>
+ <script>
+    var data = JSON.parse("{{data|escapejs}}");
+let ctn = document.getElementById("chart2").getContext("2d");
+Chart.defaults.global.defaultFontSize = 15;
+let chart2 = new Chart(ctn, {
+  type: 'horizontalBar',
+  data: {
+     labels: [
+     "Экспонат 1",
+     "Экспонат 2",
+     "Экспонат 3",
+     "Экспонат 4",
+     "Экспонат 5",
+     "Экспонат 6",
+     "Экспонат 7",
+     "Экспонат 8"],
+
+     datasets: [
+        {
+          label: "Посещаемость",
+          backgroundColor: "#F4F296",
+          data: data,
+        },
+
+     ]
+  },
+  options: {
+     legend: {
+     position: 'bottom',
+     labels: {
+      fontSize: 15,
+     }
+     },
+     responsive: true,
+     scales: {
+        x: {
+        stacked: true,
+        },
+        y: {
+        stacked: true
+        },
+    }
+  },
+
+});
+  </script>
+</div>
+</div>
+
+</div>
+</body>
+</html>

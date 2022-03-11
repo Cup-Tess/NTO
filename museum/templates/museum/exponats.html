@@ -1,0 +1,23 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Пользовательская статистика</title>
+    <link rel="stylesheet" href="{% static 'css/exponats.css' %}">
+</head>
+<body>
+<div>
+    <a href="{% url 'exp1' %}">Экспонат 1</a>
+    <a href="{% url 'exp2' %}">Экспонат 2</a>
+    <a href="{% url 'exp3' %}">Экспонат 3</a>
+    <a href="{% url 'exp4' %}">Экспонат 4</a>
+    <a href="{% url 'exp5' %}">Экспонат 5</a>
+    <a href="{% url 'exp6' %}">Экспонат 6</a>
+    <a href="{% url 'exp7' %}">Экспонат 7</a>
+    <a href="{% url 'exp8' %}">Экспонат 8</a>
+
+<a href="{% url 'main' %}" class="back">Назад</a>
+</div>
+</body>
+</html>

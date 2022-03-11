@@ -1,0 +1,68 @@
+@media (min-width: 1100px){
+body {
+background: url("/static/img/baykal.jpg") no-repeat;
+background-size: 100% 170%;
+display: flex;
+align-items: center;
+align-content: center;
+justify-content: center;
+}
+
+p{
+background-color: white;
+width: 60%;
+height: 100%;
+opacity: 0.5;
+padding: 3%;
+}
+
+a {
+display: block;
+text-decoration: none;
+font-size: 350%;
+width: 50%;
+color: black;
+text-align: center;
+margin: auto;
+border: 1px solid black;
+margin-bottom: 1%;
+margin-top: 1%;
+}
+a.back {
+font-size: 200%;
+width: 20%;
+margin-top: 20%;
+}
+}
+
+@media (max-width: 1199.98px) {
+body {
+background: url("/static/img/lake.jpg") no-repeat;
+}
+p{
+display: block;
+margin: auto;
+background-color: white;
+width: 80%;
+height: 150%;
+opacity: 0.5;
+padding: 5%;
+}
+a {
+text-decoration: none;
+font-size: 300%;
+width: 100%;
+color: black;
+text-align: center;
+display: block;
+margin: auto;
+border: 1px solid black;
+margin-bottom: 5%;
+margin-top: 5%;
+}
+a.back {
+font-size: 200%;
+width: 20%;
+margin-top: 20%;
+}
+}

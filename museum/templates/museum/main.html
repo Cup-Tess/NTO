@@ -1,0 +1,21 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>BaykalAR</title>
+    <link rel="stylesheet" href="{% static 'css/mains.css' %}">
+</head>
+<body>
+<p>
+    <a href="{% url 'galery' %}">Афиша</a>
+    <br><a href="{% url 'photoB' %}">Фотобудка</a>
+    <br><a href="{% url 'portal' %}">Портал</a>
+    <br><a href="{% url 'galery' %}">AR-гид</a>
+    <br><a href="{% url 'statistica_polz' %}">Статистика</a>
+    <br><a href="{% url 'exponats' %}">Экспонаты</a>
+    <br><a href="{% url 'login' %}" class="back">Вход</a>
+</p>
+</body>
+</html>
+

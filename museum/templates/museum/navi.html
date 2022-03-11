@@ -1,0 +1,16 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BaykalAR</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <input type="number" id="nom" name="nom">
+        <button type="submit" onclick="PoleD()" class="save btn btn-default" name="save">Save</button>
+    </div>
+    </form>
+</body>
+</html>

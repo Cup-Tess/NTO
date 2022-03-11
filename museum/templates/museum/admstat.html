@@ -1,0 +1,148 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'css/statCrit1.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+</head>
+<body>
+<div class="desktop">
+<div class="body">
+
+<a href="{% url 'login' %}" class="login">Назад</a>
+<div class="dia">
+<canvas id="chart" width="80" height="100"></canvas>
+ <script>
+    var data1 = JSON.parse("{{data1|escapejs}}");
+    var data2 = JSON.parse("{{data2|escapejs}}");
+    var data3 = JSON.parse("{{data3|escapejs}}");
+let ctx = document.getElementById("chart").getContext("2d");
+Chart.defaults.global.defaultFontSize = 25;
+let chart = new Chart(ctx, {
+  type: "bar",
+  data: {
+     labels: [
+     "Экспонат 1",
+     "Экспонат 2",
+     "Экспонат 3",
+     "Экспонат 4",
+     "Экспонат 5",
+     "Экспонат 6",
+     "Экспонат 7",
+     "Экспонат 8"],
+
+     datasets: [
+        {
+          label: "Среднее значение",
+          backgroundColor: "#F4F296",
+          data: data1,
+        },
+        {
+          label: "Минимальное значение",
+          backgroundColor: "#96D3F4",
+          data: data2,
+        },
+        {
+          label: "Максимальное значение",
+          backgroundColor: "#F49C96",
+          data:data3,
+        }
+
+     ]
+  },
+  options: {
+     legend: {
+     position: 'bottom',
+     labels: {
+      fontSize: 20,
+     }
+     },
+     responsive: true,
+     scales: {
+        x: {
+        stacked: true,
+        },
+        y: {
+        stacked: true
+        },
+    }
+  },
+
+});
+  </script>
+</div>
+</div>
+</div>
+<div class="mobile">
+    <div class="body">
+
+<a href="{% url 'login' %}" class="login">Назад</a>
+<div class="dia2">
+<canvas id="chart2" width="100" height="100"></canvas>
+ <script>
+     var data1 = JSON.parse("{{data1|escapejs}}");
+    var data2 = JSON.parse("{{data2|escapejs}}");
+    var data3 = JSON.parse("{{data3|escapejs}}");
+let ctn = document.getElementById("chart2").getContext("2d");
+Chart.defaults.global.defaultFontSize = 15;
+let chart2 = new Chart(ctn, {
+  type: 'horizontalBar',
+  data: {
+     labels: [
+     "Экспонат 1",
+     "Экспонат 2",
+     "Экспонат 3",
+     "Экспонат 4",
+     "Экспонат 5",
+     "Экспонат 6",
+     "Экспонат 7",
+     "Экспонат 8"],
+
+     datasets: [
+        {
+          label: "Среднее значение",
+          backgroundColor: "#F4F296",
+          data: data1,
+        },
+        {
+          label: "Минимальное значение",
+          backgroundColor: "#96D3F4",
+          data:data2,
+        },
+        {
+          label: "Максимальное значение",
+          backgroundColor: "#F49C96",
+          data: data3,
+        }
+
+     ]
+  },
+  options: {
+     legend: {
+     position: 'bottom',
+     labels: {
+      fontSize: 15,
+     }
+     },
+     responsive: true,
+     scales: {
+        x: {
+        stacked: true,
+        },
+        y: {
+        stacked: true
+        },
+    }
+  },
+
+});
+  </script>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

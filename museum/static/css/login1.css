@@ -1,0 +1,129 @@
+@media (min-width: 1100px){
+body {
+background: url("/static/img/baikal.jpg") no-repeat;
+background-size: 200% 100%;
+}
+
+h1 {
+font-size:300%;}
+p {
+font-size: 200%;
+}
+
+input {
+display: block;
+margin: auto;
+font-size: 200%;
+}
+
+div {
+display: block;
+margin: auto;
+background-color: white;
+opacity: 0.7;
+width: 70%;
+padding: 3%;
+}
+a {
+text-decoration: none;
+display: block;
+margin: auto;
+text-align: center;
+width: 40%;
+font-size: 250%;
+padding: 2%;
+margin-top: 5%;
+border: 1px solid black;
+color: black;
+}
+a.back {
+font-size: 200%;
+width: 30%;
+margin-top: 20%;
+}
+}
+
+@media (max-width: 730px){
+body {
+background: url("/static/img/baikal.jpg") no-repeat;
+background-size: 250% 100%;;
+}
+h1 {
+font-size:300%;}
+p {
+font-size: 200%;
+}
+input {
+display: block;
+margin: auto;
+width: 90%;
+}
+div {
+display: block;
+margin: auto;
+background-color: white;
+opacity: 0.7;
+width: 90%;
+padding: 3%;
+}
+a {
+text-decoration: none;
+display: block;
+margin: auto;
+text-align: center;
+width: 80%;
+font-size: 200%;
+padding: 2%;
+margin-top: 15%;
+border: 1px solid black;
+color: black;
+}
+a.back {
+font-size: 150%;
+width: 30%;
+margin-top: 40%;
+}
+}
+
+@media (max-width: 1099.98px) and (min-width: 730.02px){
+body {
+background: url("/static/img/baikal.jpg") no-repeat;
+background-size: 150% 130%;
+}
+h1 {
+font-size:300%;}
+p {
+font-size: 200%;
+}
+input {
+display: block;
+margin: auto;
+width: 90%;
+font-size: 150%;
+}
+div {
+display: block;
+margin: auto;
+background-color: white;
+opacity: 0.7;
+width: 90%;
+padding: 3%;
+}
+a {
+text-decoration: none;
+display: block;
+margin: auto;
+text-align: center;
+width: 80%;
+font-size: 200%;
+padding: 2%;
+margin-top: 15%;
+border: 1px solid black;
+color: black;
+}
+a.back {
+font-size: 150%;
+width: 30%;
+margin-top: 40%;
+}
+}

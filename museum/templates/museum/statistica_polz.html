@@ -1,0 +1,17 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Пользовательская статистика</title>
+    <link rel="stylesheet" href="{% static 'css/statpolz1.css' %}">
+</head>
+<body>
+<div>
+<a href="{% url 'statCrit1' %}">Средняя оценка экспоната</a>
+<a href="{% url 'posesch' %}">Посещаемость экспоната</a>
+
+<a href="{% url 'main' %}" class="back">Назад</a>
+</div>
+</body>
+</html>
